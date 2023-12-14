@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-RLtN/QYNK0P+RuE5yYdT3XMvZKA+SDv9aY7yz4HhLz6sbpG/Nbnj/SzLb2Jatq4co1s8w5ikqjA7gYDV2y18wA==" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="styles.css">
+  <title>Planilla de Control de Depósito</title>
+</head>
+<body>
+
+  <h1>Planilla de Control de Depósito</h1>
+
+  <div id="loginContainer">
+    <label for="firmaDigital">Ingrese su firma digital:</label>
+    <input type="password" id="firmaDigital" placeholder="Firma Digital">
+    <button onclick="autenticarUsuario()">
+      <i class="fas fa-sign-in-alt"></i> Ingresar
+    </button>
+  </div>
+
+  <div id="planillaContainer" style="display: none;">
+    <!-- Sección de Recepción de Stock -->
+    <h2>Recepción de Stock</h2>
+    <label for="searchInput">Buscar por nombre de producto:</label>
+    <input type="text" id="searchInput" oninput="buscarProducto()">
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Código de Producto</th>
+            <th>Producto</th>
+            <th>Stock Inicial</th>
+            <th>Recepción</th>
+            <th>Despacho</th>
+            <th>Stock Final</th>
+            <th>Adjunto</th>
+            <th>Firma Digital</th>
+            <th>Usuario</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="stockTableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Botones y funciones -->
+    <button class="btn" onclick="isAdmin ? agregarMovimiento() : alert('Acceso denegado');">
+      <i class="fas fa-plus"></i> Agregar Movimiento
+    </button>
+
+    <!-- Botón Salir -->
+    <button id="salirBtn" class="btn" onclick="salirUsuario()">
+      <i class="fas fa-sign-out-alt"></i> Salir
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
